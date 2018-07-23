@@ -28,6 +28,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -73,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     userlocation = task.getResult();
                     mMap.clear();
                     LatLng currentLocation = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
+               //     mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
                     mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.builder()
                             .target(currentLocation)
                             .tilt(67.5f)
@@ -92,8 +93,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
                 99);
     }
-
-
 
     public boolean checkP(){
         return (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
@@ -141,7 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.clear();
                     userlocation=location;
                     LatLng currentLocation = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
+      //              mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                     mMap.moveCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.builder()
                             .target(currentLocation)
                             .tilt(67.5f)
@@ -198,12 +197,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         stopLocationUpdates();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        getLastLocationFun();
-
-    }
 
     @Override
     public void onUpdateMapAfterUserInterection(Point touchpoint, Point newTouchpoint) {
@@ -211,7 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 try {
 
     final LatLng newLocation = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
-    mMap.addMarker(new MarkerOptions().position(newLocation).title("Current Location"));
+  //  mMap.addMarker(new MarkerOptions().position(newLocation).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
     Projection projection = mMap.getProjection();
     center = projection.toScreenLocation(newLocation);
     Point centerOfMap = center;

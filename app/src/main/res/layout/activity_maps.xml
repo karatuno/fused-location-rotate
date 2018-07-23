@@ -48,11 +48,6 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#2200ff00" />
-
-        <View
-            android:layout_width="match_parent"
             android:layout_height="137dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
